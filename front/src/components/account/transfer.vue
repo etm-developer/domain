@@ -98,7 +98,7 @@
               <p v-else>{{transfer.recipientId | truncate(17, '...')}}</p>
             </sui-table-cell>
             <sui-table-cell>{{transfer.amount / 1e8}}</sui-table-cell>
-            <sui-table-cell>{{transfer.t_timestamp | aschTime}}</sui-table-cell>
+            <sui-table-cell>{{transfer.t_timestamp }}</sui-table-cell>
             <sui-table-cell>{{transfer.currency}}</sui-table-cell>
           </sui-table-row>
         </sui-table-body>
@@ -111,7 +111,7 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
-import aschJS from 'asch-js'
+import etmJS from 'etm-js'
 import { create } from 'vue-modal-dialogs'
 import questiondialog from '../modal/questiondialog'
 
@@ -155,7 +155,7 @@ export default {
 
       if (answer === 'Yes') {
         let that = this
-        let result = await this.$store.dispatch('inTransfer', { that: that, aschJS, recipientAddress: this.recipientAddress, selectedCoin: this.selectedCoin, amount: this.amount })
+        let result = await this.$store.dispatch('inTransfer', { that: that, etmJS, recipientAddress: this.recipientAddress, selectedCoin: this.selectedCoin, amount: this.amount })
 
         if (result.success && result.success === true) {
           this.$noty.success(`<b>Dapp transfer of ${this.amount} ${this.selectedCoin} to<br/>${this.recipientAddress} was successful!</b>`)

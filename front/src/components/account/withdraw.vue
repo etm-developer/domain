@@ -61,7 +61,7 @@
             <sui-table-cell>{{draw.id | truncate(25, '...')}}</sui-table-cell>
             <sui-table-cell>{{draw.args | transWithdrawArgsFilter('currency')}}</sui-table-cell>
             <sui-table-cell>{{draw.args | transWithdrawArgsFilter('amount') / 1e8}}</sui-table-cell>
-            <sui-table-cell>{{draw.timestamp | aschTime}}   </sui-table-cell>
+            <sui-table-cell>{{draw.timestamp | etmTime}}   </sui-table-cell>
             <sui-table-cell>{{draw.fee / 1e8 }}</sui-table-cell>
             <sui-table-cell>{{draw.height}}</sui-table-cell>
           </sui-table-row>
@@ -75,7 +75,7 @@
 import { required } from 'vuelidate/lib/validators'
 import { create } from 'vue-modal-dialogs'
 import questiondialog from '../modal/questiondialog'
-import aschJS from 'asch-js'
+import etmJS from 'etm-js'
 
 const areYouSure = create(questiondialog)
 
@@ -125,7 +125,7 @@ export default {
       })
       if (answer === 'Yes') {
         let that = this
-        let result = await this.$store.dispatch('dappWithdrawal', { that: that, aschJS, coin: this.selectedCoin, amount: this.amount })
+        let result = await this.$store.dispatch('dappWithdrawal', { that: that, etmJS, coin: this.selectedCoin, amount: this.amount })
         if (result.success && result.success === true) {
           this.$noty.success(`Dapp withdrawal of ${this.amount} ${this.selectedCoin} was successful!`)
           this.selectedCoin = ''

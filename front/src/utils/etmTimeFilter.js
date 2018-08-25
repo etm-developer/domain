@@ -27,11 +27,11 @@ function getRealTime (epochTime) {
   return t + epochTime * 1000
 }
 
-let aschTimeFilter = function (time) {
+let etmTimeFilter = function (time) {
   let unixTimestamp = getRealTime(time)
   let stringDate = new Date(unixTimestamp)
   let formattedDate = moment(stringDate).format('MM/DD/YYYY hh:mm')
   return formattedDate
 }
 
-export default aschTimeFilter
+export default etmTimeFilter

@@ -42,7 +42,7 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
-import aschJS from 'asch-js'
+import etmJS from 'etm-js'
 import Mnemonic from 'bitcore-mnemonic'
 export default {
   name: 'login',
@@ -55,7 +55,7 @@ export default {
     login: async function () {
       let that = this
       let secret = this.secret
-      let result = await this.$store.dispatch('getUserInfo', { that, secret, aschJS })
+      let result = await this.$store.dispatch('getUserInfo', { that, secret, etmJS })
 
       if (result.success && result.success === true) {
         this.$router.push('/')

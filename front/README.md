@@ -1,4 +1,4 @@
-# asch-dapp-helloworld
+# etm-domain
 
 > A Vue.js project
 
@@ -33,7 +33,6 @@ TODO
 - style notfound component
 - Refresh user balance after transfer and withdrawal
 - BUG: Enter-key in form makes dropdown open, instead
-- Rewrite readme of (not this on), from asch-dapp-hello
 - add paging for lists
 - On first start: show message if environment varialble ENDPOINT is correctly set (maybe console.log) 
 

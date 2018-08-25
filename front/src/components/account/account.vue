@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import aschJS from 'asch-js'
+import etmJS from 'etm-js'
 import { create } from 'vue-modal-dialogs'
 import questiondialog from '../modal/questiondialog'
 
@@ -118,7 +118,7 @@ export default {
     let secret = this.$store.state.userInfo.secret
 
     setTimeout(async function () {
-      let result = await that.$store.dispatch('getUserInfo', { that, secret, aschJS })
+      let result = await that.$store.dispatch('getUserInfo', { that, secret, etmJS })
       console.log('settimeout')
       if (result.success && result.success === true) {
         that.$noty.info('User balances was updated')

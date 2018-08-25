@@ -10,9 +10,9 @@ const UNDEFINED_ERROR = 'An undefined error occured!'
 const REQUEST_ERROR = 'Error during request'
 
 let actions = {
-  async getUserInfo ({ commit, state }, { secret, that, aschJS }) {
-    let keypair = aschJS.crypto.getKeys(secret)
-    let address = aschJS.crypto.getAddress(keypair.publicKey)
+  async getUserInfo ({ commit, state }, { secret, that, etmJS }) {
+    let keypair = etmJS.crypto.getKeys(secret)
+    let address = etmJS.crypto.getAddress(keypair.publicKey)
 
     try {
       let result = await that.$axios.get(loginUrl + address)
@@ -139,7 +139,7 @@ let actions = {
     }
   },
 
-  async inTransfer ({ commit, state }, { that, aschJS, recipientAddress, selectedCoin, amount }) {
+  async inTransfer ({ commit, state }, { that, etmJS, recipientAddress, selectedCoin, amount }) {
     try {
       let secret = that.$store.getters.secret
       let data = {
@@ -147,7 +147,7 @@ let actions = {
         type: 3,
         args: JSON.stringify([selectedCoin, String((amount * 1e8)), recipientAddress])
       }
-      let transaction = aschJS.dapp.createInnerTransaction(data, secret)
+      let transaction = etmJS.dapp.createInnerTransaction(data, secret)
       let result = await that.$axios.put(signedTransactionsPost, { transaction: transaction })
       if (result.status === 200) {
         return result.data
@@ -189,7 +189,7 @@ let actions = {
     }
   },
 
-  async dappWithdrawal ({ commit, state }, { that, aschJS, coin, amount }) {
+  async dappWithdrawal ({ commit, state }, { that, etmJS, coin, amount }) {
     try {
       let secret = that.$store.getters.secret
       let data = {
@@ -197,7 +197,7 @@ let actions = {
         type: 2,
         args: JSON.stringify([String(coin), String(amount * 1e8)])
       }
-      var transaction = aschJS.dapp.createInnerTransaction(data, secret)
+      var transaction = etmJS.dapp.createInnerTransaction(data, secret)
       let result = await that.$axios.put(signedTransactionsPost, { transaction: transaction }, {
         headers: {
           'Content-Type': 'application/json'
