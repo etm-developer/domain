@@ -3,7 +3,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-const host = "http://118.24.135.98/domain/";
 module.exports = {
   dev: {
 
@@ -50,7 +49,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: host,
+    assetsPublicPath: '/domain',
 
     /**
      * Source Maps
