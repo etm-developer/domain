@@ -6,7 +6,7 @@ import login from '@/components/login/login'
 import account from '@/components/account/account'
 import transfer from '@/components/account/transfer'
 import withdraw from '@/components/account/withdraw'
-//import notfound from '@/components/notfound/notfound'
+// import notfound from '@/components/notfound/notfound'
 
 import store from '@/vuex/store'
 
